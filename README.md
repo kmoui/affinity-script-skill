@@ -1,8 +1,5 @@
 # Affinity-script 脚本编写 Skill
 
-> 一套让 AI Agent 能可靠编写、调试、校验 Affinity 3.3+ 脚本的技能包。
-> 沉淀自一次完整的 Affinity 脚本开发会话，包含**破译后的权限机制**、**逆向的容器格式**、
-> **打通的 MCP 调试通道**，以及 **104 项离线测试**。
 
 ## 建议使用 Affinity 国际版（Canva 版）
 
@@ -36,15 +33,6 @@
 下载 `affinity-script-0.4.zip` 并解压到你的 skills 目录
 （例如 `~/.agents/skills/affinity-script/`），重启 Agent 会话即可。
 
-## 核心结论
-
-| 结论 | 说明 |
-|---|---|
-| **API 权威资料在本机** | `C:\Program Files\Affinity\Affinity\Resources\JSLib\` 是明文 SDK 源码，版本与本机严格一致。**不要上网查** —— 官方文档站从 Agent 环境不可达，网上资料多为过时的 3.2 |
-| **优先走 MCP 通道** | 能直接执行脚本拿 `console.log` 做真机调试；`save_script_to_library` 入库的脚本**权限位 = 3（完整）**，无需修权限 |
-| **只交付 `.js` 源码** | `.afscript` 仅用于分享给别人 —— 导入后权限位 = 0，需修复 |
-| **入口只有一种** | 顶层 `function main(){…}` + 末尾 `main();`。官方 preamble 明确要求**不要**用 `module.exports.main` |
-| **权限是位掩码，不是路径** | 每脚本一条 `mreP` u64 LE 记录（bit0 = 文件系统，bit1 = 网络）；文件夹白名单是另一回事 |
 
 ## 包内内容
 
