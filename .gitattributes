@@ -1,0 +1,20 @@
+# 统一换行符，避免 Windows/跨平台协作时整文件 diff
+* text=auto eol=lf
+
+# ── 例外：Windows 批处理必须是 CRLF ──────────────────────────────
+# cmd.exe 只认 CRLF：LF 行尾会让 @echo off 失效，整文件被当一行逐词执行。
+# 这两个文件是 run-tool 的入口包装器，必须始终保持 CRLF。
+*.cmd text eol=crlf
+*.bat text eol=crlf
+
+# PowerShell 脚本用 CRLF 在 Windows 上最稳（PS 两种都能读，但保持一致）
+*.ps1 text eol=crlf
+
+*.png binary
+*.jpg binary
+*.webp binary
+*.zip binary
+
+# Affinity 容器是二进制，禁止任何换行符转换
+*.afscript binary
+*.propcol binary
